@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".demo.MainActivity">
+
+    <TextView
+        android:id="@+id/zoom_demo_to_long_picture_activity"
+        android:layout_width="230dp"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:background="#0099E8"
+        android:text="toLongPictureActivity"/>
+
+    <TextView
+        android:id="@+id/zoom_demo_to_short_picture_activity"
+        android:layout_width="230dp"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="15dp"
+        android:background="#0099E8"
+        android:text="toShortPictureActivity"/>
+
+    <TextView
+        android:id="@+id/zoom_demo_to_viewpager_activity"
+        android:layout_width="230dp"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="15dp"
+        android:background="#0099E8"
+        android:text="toViewPagerActivity"/>
+
+    <TextView
+        android:id="@+id/zoom_demo_to_size_change_activity"
+        android:layout_width="230dp"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="15dp"
+        android:background="#0099E8"
+        android:text="toSizeChangeActivity"/>
+
+</LinearLayout>
