@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.xuliwen.zoom.R;
 
 public class MainActivity extends AppCompatActivity {
     

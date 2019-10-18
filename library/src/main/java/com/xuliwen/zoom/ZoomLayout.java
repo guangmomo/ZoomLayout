@@ -16,6 +16,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.OverScroller;
 
+import com.xuliwen.zoom.library.R;
+
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.xuliwen.zoom.R;
 
 public class ShortPictureActivity extends AppCompatActivity {
 

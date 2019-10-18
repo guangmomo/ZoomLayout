@@ -3,7 +3,6 @@ package com.xuliwen.zoom.demo;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.xuliwen.zoom.R;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
