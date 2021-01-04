@@ -188,6 +188,12 @@ public class ZoomLayout extends LinearLayout {
             return true;
         }
 
+        /**
+         *
+         * @param velocityX 滑动的速度 = 滑动的距离(滑动的起点 - 滑动的终点) / 滑动的时长，所以向上滑是负的，向下滑是正的
+         * @param velocityY 同上
+         * @return
+         */
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
             if (!isEnabled()) {
@@ -208,18 +214,22 @@ public class ZoomLayout extends LinearLayout {
         }
         final int scrollY = getScrollY();
         final int scrollX = getScrollX();
-        final boolean canFlingX = (scrollX > 0 || velocityX > 0) &&
-                (scrollX < getScrollRangeX() || velocityX < 0);
-        final boolean canFlingY = (scrollY > 0 || velocityY > 0) &&
-                (scrollY < getScrollRangeY() || velocityY < 0);
+        // 只有在能够滚动的时候，才需要处理 Fling
+        final boolean canFlingX = scrollX > 0 && scrollX < getScrollRangeX(); 
+        final boolean canFlingY = scrollY > 0 && scrollY < getScrollRangeY(); 
         boolean canFling = canFlingY || canFlingX;
         if (canFling) {
+            // 下面两行代码的作用是将 Fling 速度限制在  [-mMaximumVelocity, mMaximumVelocity] 之间
             velocityX = Math.max(-mMaximumVelocity, Math.min(velocityX, mMaximumVelocity));
             velocityY = Math.max(-mMaximumVelocity, Math.min(velocityY, mMaximumVelocity));
             int height = getHeight() - getPaddingBottom() - getPaddingTop();
             int width = getWidth() - getPaddingRight() - getPaddingLeft();
             int bottom = getContentHeight();
             int right = getContentWidth();
+            // getScrollX(), getScrollY() 是 fling 开始的位置
+            // velocityX, velocityY 滚动速度
+            // 0, Math.max(0, right - width), 0, Math.max(0, bottom - height)。是滚动的范围
+            // 0, 0 是可以往外滚动的距离，这里不支持往外滚动，直接传 0
             mOverScroller.fling(getScrollX(), getScrollY(), velocityX, velocityY, 0, Math.max(0, right - width), 0,
                     Math.max(0, bottom - height), 0, 0);
             notifyInvalidate();
@@ -371,6 +381,12 @@ public class ZoomLayout extends LinearLayout {
         }
     }
 
+    /**
+     * 通常配合 Scroller、OverScroller 实现平滑滚动。如 Fling 的时候进行平滑滚动。
+     * Scroller、OverScroller 负责计算一段时间内的 ScrollX、ScrollY 的平滑变化
+     * 然后调用 ViewCompat.postInvalidateOnAnimation(this); 之后就可以在
+     * computeScroll() 不断去获取 ScrollX、ScrollY 的变化了，再通过 ScrollTo 设置给 View
+     */
     @Override
     public void computeScroll() {
         super.computeScroll();
